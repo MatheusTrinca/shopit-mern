@@ -4,11 +4,16 @@
   "description": "ShopIt Ecommerce Website",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node backend/server.js",
+    "dev": "NODE_ENV=DEVELOPMENT nodemon backend/server.js",
+    "prod": "NODE_ENV=PRODUCTION nodemon backend/server.js"
   },
   "author": "Matheus Felipe Trinca",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mongoose": "^6.0.13",
     "nodemon": "^2.0.15"
   }
 }
