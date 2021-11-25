@@ -47,7 +47,7 @@ exports.updatePassword = catchAsyncErrors(async (req, res, next) => {
   sendToken(user, 200, res);
 });
 
-// Get All Users => /api/v1/admin/users
+// Get All Users - ADMIN => /api/v1/admin/users
 exports.getAllUsers = catchAsyncErrors(async (req, res, next) => {
   const users = await User.find();
 
@@ -57,7 +57,7 @@ exports.getAllUsers = catchAsyncErrors(async (req, res, next) => {
   });
 });
 
-// Get User Details => api/admin/user/:id
+// Get User Details - ADMIN => api/admin/user/:id
 exports.getUserDetails = catchAsyncErrors(async (req, res, next) => {
   const user = await User.findById(req.params.id);
   if (!user) {
@@ -72,7 +72,7 @@ exports.getUserDetails = catchAsyncErrors(async (req, res, next) => {
   });
 });
 
-// Update User => /api/v1/admin/user/:id
+// Update User - ADMIN => /api/v1/admin/user/:id
 exports.updateUser = catchAsyncErrors(async (req, res, next) => {
   const newUSerData = {
     name: req.body.name,
@@ -91,7 +91,7 @@ exports.updateUser = catchAsyncErrors(async (req, res, next) => {
   });
 });
 
-// Delete User => /api/v1/admin/user/:id
+// Delete User - ADMIN => /api/v1/admin/user/:id
 exports.deleteUser = catchAsyncErrors(async (req, res, next) => {
   const user = await User.findById(req.params.id);
 

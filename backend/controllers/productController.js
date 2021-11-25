@@ -35,7 +35,7 @@ exports.getSingleProduct = catchAsyncErrors(async (req, res, next) => {
   });
 });
 
-// Create new product => /api/v1/admin/product/new
+// Create new product - ADMIN => /api/v1/admin/product/new
 exports.newProduct = catchAsyncErrors(async (req, res, next) => {
   req.body.user = req.user.id;
 
@@ -47,7 +47,7 @@ exports.newProduct = catchAsyncErrors(async (req, res, next) => {
   });
 });
 
-// Update product => /api/v1/admin/product/:id
+// Update product - ADMIN => /api/v1/admin/product/:id
 exports.updateProduct = catchAsyncErrors(async (req, res, next) => {
   let product = await Product.findById(req.params.id);
   if (!product) {
@@ -63,7 +63,7 @@ exports.updateProduct = catchAsyncErrors(async (req, res, next) => {
   });
 });
 
-// Delete product => /api/v1/admin/product/:id
+// Delete product - ADMIN => /api/v1/admin/product/:id
 exports.deleteProduct = catchAsyncErrors(async (req, res, next) => {
   const product = await Product.findById(req.params.id);
   if (!product) {
