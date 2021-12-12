@@ -5,7 +5,7 @@ const APIFeatures = require('../utils/apiFeatures');
 
 // Get all products => /api/v1/products?keyworld=apple
 exports.getProducts = catchAsyncErrors(async (req, res, next) => {
-  const productsCount = await Product.countDocuments();
+  //const productsCount = await Product.countDocuments();
 
   const resPerPage = 4;
 
@@ -18,7 +18,7 @@ exports.getProducts = catchAsyncErrors(async (req, res, next) => {
 
   res.status(200).json({
     success: true,
-    productsCount,
+    productsCount: products.length,
     products,
   });
 });

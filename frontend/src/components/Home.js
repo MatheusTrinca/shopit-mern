@@ -2,8 +2,12 @@ import React, { useEffect } from 'react';
 import MetaData from './layout/MetaData';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProducts } from '../actions/productsActions';
+import Product from '../components/product/Product';
+import Loader from '../components/layout/Loader';
+import { useAlert } from 'react-alert';
 
 const Home = () => {
+  const alert = useAlert();
   const dispatch = useDispatch();
 
   const { productsCount, loading, error, products } = useSelector(
@@ -11,8 +15,15 @@ const Home = () => {
   );
 
   useEffect(() => {
+    if (error) {
+      return alert.error(error);
+    }
     dispatch(getProducts());
-  }, [dispatch]);
+  }, [dispatch, alert, error]);
+
+  if (loading) {
+    return <Loader />;
+  }
 
   return (
     <>
@@ -22,30 +33,7 @@ const Home = () => {
         <div className="row">
           {products &&
             products.map(product => (
-              <div className="col-sm-12 col-md-6 col-lg-3 my-3">
-                <div className="card p-3 rounded">
-                  <img
-                    className="card-img-top mx-auto"
-                    src={product.images[0].url}
-                    alt="Product"
-                  />
-                  <div className="card-body d-flex flex-column">
-                    <h5 className="card-title">
-                      <a href="#link">{product.name}</a>
-                    </h5>
-                    <div className="ratings mt-auto">
-                      <div className="rating-outer">
-                        <div className="rating-inner"></div>
-                      </div>
-                      <span id="no_of_reviews">(5 Reviews)</span>
-                    </div>
-                    <p className="card-text">$45.67</p>
-                    <a href="#link" id="view_btn" className="btn btn-block">
-                      Detalhes
-                    </a>
-                  </div>
-                </div>
-              </div>
+              <Product key={product._id} product={product} />
             ))}
         </div>
       </section>
