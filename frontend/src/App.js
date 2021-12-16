@@ -2,6 +2,7 @@ import Home from './components/Home';
 import ProductDetails from './components/product/ProductDetails';
 import Footer from './components/layout/Footer';
 import Header from './components/layout/Header';
+import Search from './components/layout/Search';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
@@ -11,7 +12,9 @@ function App() {
         <Header />
         <div className="container container-fluid">
           <Routes>
-            <Route path="/" exact element={<Home />} />
+            <Route path="/" exact element={<Home />}>
+              <Route path="/search/:keyword" exact element={<Search />} />
+            </Route>
             <Route path="/product/:id" exact element={<ProductDetails />} />
           </Routes>
         </div>

@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import MetaData from './layout/MetaData';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProducts } from '../actions/productsActions';
@@ -6,23 +7,28 @@ import Product from '../components/product/Product';
 import Loader from '../components/layout/Loader';
 import { useAlert } from 'react-alert';
 import Pagination from 'react-js-pagination';
+import Slider from 'rc-slider';
+import 'rc-slider/assets/index.css';
+
+const createSliderWithTooltip = Slider.createSliderWithTooltip;
+const Range = createSliderWithTooltip(Slider.Range);
+// 77. 3:10
 
 const Home = () => {
   const alert = useAlert();
   const dispatch = useDispatch();
-
   const [currentPage, setCurrentPage] = useState(1);
-
+  const { keyword } = useParams();
   const { productsCount, loading, error, products, resPerPage } = useSelector(
     state => state.products
   );
-
   useEffect(() => {
     if (error) {
       return alert.error(error);
     }
-    dispatch(getProducts(currentPage));
-  }, [dispatch, alert, error, currentPage]);
+
+    dispatch(getProducts(keyword, currentPage));
+  }, [dispatch, alert, error, currentPage, keyword]);
 
   const setCurrentPageNo = useCallback(pageNum => {
     setCurrentPage(pageNum);
