@@ -4,7 +4,7 @@ module.exports = (err, req, res, next) => {
   err.statusCode = err.statusCode || 500;
 
   if (process.env.NODE_ENV === 'DEVELOPMENT') {
-    res.status(err.statusCode).json({
+    return res.status(err.statusCode).json({
       success: false,
       error: err,
       errMessage: err.message,
@@ -41,7 +41,7 @@ module.exports = (err, req, res, next) => {
       error = new ErrorHandler(message, 400);
     }
 
-    res.status(error.statusCode).json({
+    return res.status(error.statusCode).json({
       success: false,
       message: error.message || 'Internal Server Error',
     });
