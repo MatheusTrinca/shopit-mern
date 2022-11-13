@@ -5,7 +5,7 @@ const Home = () => {
   return (
     <>
       <Metadata title="Compre os Melhores Produtos Online" />
-      <h1 id="products_heading">Latest Products</h1>
+      <h1 id="products_heading">Últimas novidades</h1>
 
       <section id="products" class="container mt-5">
         <div className="row">
@@ -26,11 +26,11 @@ const Home = () => {
                   <div className="rating-outer">
                     <div className="rating-inner"></div>
                   </div>
-                  <span id="no_of_reviews">(5 Reviews)</span>
+                  <span id="no_of_reviews">(5 Avaliações)</span>
                 </div>
-                <p className="card-text">$45.67</p>
+                <p className="card-text">R$45.67</p>
                 <a href="/" id="view_btn" className="btn btn-block">
-                  View Details
+                  Ver Detalhes
                 </a>
               </div>
             </div>

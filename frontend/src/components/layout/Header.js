@@ -32,7 +32,7 @@ const Header = () => {
           </button>
 
           <span id="cart" className="ml-3">
-            Cart
+            Carrinho
           </span>
           <span className="ml-1" id="cart_count">
             2
