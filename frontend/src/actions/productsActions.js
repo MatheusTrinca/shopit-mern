@@ -11,13 +11,13 @@ import {
 } from '../constants/productsConstants';
 
 // Get All Products
-export const getAllProducts = () => async dispatch => {
+export const getAllProducts = currentPage => async dispatch => {
   try {
     dispatch({
       type: ALL_PRODUCTS_REQUEST,
     });
 
-    const { data } = await axios.get('/api/v1/products');
+    const { data } = await axios.get(`/api/v1/products?page=${currentPage}`);
 
     dispatch({
       type: ALL_PRODUCTS_SUCCESS,

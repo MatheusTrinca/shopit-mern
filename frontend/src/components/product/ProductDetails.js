@@ -2,14 +2,13 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProductDetail, clearErrors } from '../../actions/productsActions';
 import { useParams, useLocation, useNavigate } from 'react-router-dom';
-import { useAlert } from 'react-alert';
+import { toast } from 'react-toastify';
 import Loader from '../layout/Loader';
 import Carousel from 'react-bootstrap/Carousel';
+import Metadata from '../layout/Metadata';
 
 const ProductDetails = () => {
   const dispatch = useDispatch();
-
-  const alert = useAlert();
 
   const { id } = useParams();
 
@@ -21,10 +20,10 @@ const ProductDetails = () => {
     dispatch(getProductDetail(id));
 
     if (error) {
-      alert.error(error);
+      toast.error(error);
       dispatch(clearErrors());
     }
-  }, [dispatch, id, alert, error]);
+  }, [dispatch, id, error]);
 
   console.log(product);
 
@@ -34,6 +33,7 @@ const ProductDetails = () => {
         <Loader />
       ) : (
         <div className="row f-flex justify-content-around">
+          <Metadata title={`${product.name}`} />
           <div className="col-12 col-lg-5 img-fluid" id="product_image">
             <Carousel>
               {product.images &&
