@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
-import Metadata from "./layout/Metadata";
-import { useDispatch, useSelector } from "react-redux";
-import { getAllProducts } from "../actions/productsActions";
-import Product from "./product/Product";
-import Loader from "./layout/Loader";
-import { toast } from "react-toastify";
-import Pagination from "react-js-pagination";
+import React, { useEffect, useState } from 'react';
+import Metadata from './layout/Metadata';
+import { useDispatch, useSelector } from 'react-redux';
+import { getAllProducts } from '../actions/productsActions';
+import Product from './product/Product';
+import Loader from './layout/Loader';
+import { toast } from 'react-toastify';
+import Pagination from 'react-js-pagination';
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -47,8 +47,8 @@ const Home = () => {
                 itemsCountPerPage={resPerPage}
                 totalItemsCount={productsCount}
                 onChange={setCurrentPage}
-                firstPageText={"Primeira"}
-                lastPageText={"Última"}
+                firstPageText={'Primeira'}
+                lastPageText={'Última'}
                 itemClass="page-item"
                 linkClass="page-link"
               />
